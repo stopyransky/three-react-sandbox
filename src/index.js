@@ -1,4 +1,4 @@
-import * as d3 from 'd3';
+
 import * as vertexShader from './shaders/vertex.glsl';
 import * as fragmentShader from './shaders/fragment.glsl';
 
@@ -6,13 +6,16 @@ var regl = require('regl')();
 
 const width = window.innerWidth;
 const height = window.innerHeight;
+const points = [];
 
-const points = d3.range(5000).map(() => ({
-  x: Math.random() * width,
-  y: Math.random() * height,
-  color: [0, Math.random(), 0],
-  pointSize: Math.random() * 6 + 2
-}));
+for(var i = 0; i < 5000; i++) {
+  points.push({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    color: [0, Math.random(), 0],
+    pointSize: Math.random() * 6 + 2
+  });
+}
 
 const draw = regl({
   vert: vertexShader,
