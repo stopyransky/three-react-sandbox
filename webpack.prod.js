@@ -29,6 +29,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
         test: /\.css$/,
         use: [
           {
@@ -103,7 +110,7 @@ module.exports = {
     }),
     new HTMLWebpackPlugin({
       template: './src/index.ejs',
-      title: 'regl MVE'
+      title: 'three sandbox'
     }),
     new CompressionPlugin({
       algorithm: 'gzip'
